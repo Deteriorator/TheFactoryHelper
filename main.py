@@ -20,7 +20,12 @@ if __name__ == '__main__':
     #     print('{:<20}'.format(k))
     #     print('{:.2f}'.format(a.product_cost(k)), '\n')
     # print(a.product_cost('Speakers'))
-    for k, v in Config.ManuFacturing.items():
-        print('{:<20}'.format(k))
-        print('{:.2%}'.format(a.product_profit_rate(k)), '\n')
-    print('{:.2%}'.format(a.product_profit_rate('Hose')), '\n')
+    # for k, v in Config.ManuFacturing.items():
+    #     print('{:<20}'.format(k))
+    #     print('{:.2%}'.format(a.product_profit_rate(k)), '\n')
+    # print('{:.2%}'.format(a.product_profit_rate('Hose')), '\n')
+    print(a.profit_dict())
+    print(a.cost_dict())
+    print(len(a.profit_dict()))
+    print(len(a.cost_dict()))
+    print(len(Config.ManuFacturing))

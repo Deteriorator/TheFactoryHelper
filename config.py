@@ -60,7 +60,7 @@ class Config:
             }
         },
         'Gear': {
-            'Price': 6.56,
+            'price': 6.56,
             'part': {
                 'Metal': 2
             }
@@ -306,5 +306,35 @@ class Config:
                 'Conveyor': 1,
                 'Thing-a-ma-jig': 1
             }
+        }
+    }
+
+    staple = {
+        'Cardboard': {
+            'price': 0.18
+        },
+        'Concrete': {
+            'price': 3.14
+        },
+        'Magnet': {
+            'price': 4.26
+        },
+        'Metal': {
+            'price': 2.55
+        },
+        'Paint': {
+            'price': 1.70
+        },
+        'Plastic': {
+            'price': 0.45
+        },
+        'Rare metal': {
+            'price': 5.86
+        },
+        'Rubber': {
+            'price': 0.83
+        },
+        'Wire': {
+            'price': 1.28
         }
     }

@@ -19,6 +19,7 @@ class Production(object):
     def __init__(self, staple: dict, product: dict):
         self.product = product   # 产品
         self.staple = staple     # 原料
+        self.ordered_profit = {}
 
     def staple_cost(self, item) -> float:
         return self.staple.get(item)
@@ -28,17 +29,28 @@ class Production(object):
         cost = float(0.00)
         for k, v in product.items():
             if k in Config.Purchasing:
-                print('{:<20}{:<8.2f}{:<8}{:<2.2f}'.format(k, self.staple_cost(k), v, self.staple_cost(k) * v))
+                # print('{:<20}{:<8.2f}{:<8}{:<2.2f}'.format(k, self.staple_cost(k), v, self.staple_cost(k) * v))
                 cost += self.staple_cost(k) * v
             if k in Config.ManuFacturing:
                 cost += self.product_cost(k) * v
         return cost
 
-    def product_profit(self, item):
+    def product_profit(self, item) -> float:
         price = self.product.get(item).get('price')
         profit = price - self.product_cost(item)
         return profit
 
-    def product_profit_rate(self, item):
+    def product_profit_rate(self, item) -> float:
         return round(self.product_profit(item) / self.product_cost(item), 2)
 
+    def profit_dict(self) -> dict:
+        profit = {}
+        for k, v in self.product.items():
+            profit[k] = self.product_profit_rate(k)
+        return profit
+
+    def cost_dict(self) -> dict:
+        cost = {}
+        for k, v in self.product.items():
+            cost[k] = self.product_cost(k)
+        return cost
