@@ -19,7 +19,6 @@ class Production(object):
     def __init__(self, staple: dict, product: dict):
         self.product = product   # 产品
         self.staple = staple     # 原料
-        self.ordered_profit = {}
 
     def staple_cost(self, item) -> float:
         return self.staple.get(item)
@@ -42,6 +41,18 @@ class Production(object):
 
     def product_profit_rate(self, item) -> float:
         return round(self.product_profit(item) / self.product_cost(item), 2)
+
+    def update_dict(self):
+        ordered_product = []
+        for k, v in self.product.items():
+            info = {}
+            info['Name'] = k
+            info['Cost'] = self.product_cost(k)
+            info['ProfitRate'] = self.product_profit_rate(k)
+            ordered_product.append(info)
+        new = sorted(ordered_product, key=lambda a: a.get('ProfitRate'), reverse=True)
+        # 'Adv concrete': {'Cost': 247.01, 'ProfitRate': 0.33}, 'Belt': {'Cost': 247.01, 'ProfitRate': 0.33},
+        return new
 
     def profit_dict(self) -> dict:
         profit = {}
